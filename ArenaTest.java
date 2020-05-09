@@ -1,6 +1,7 @@
 package me.desertfox.mm;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.bukkit.entity.Player;
@@ -12,7 +13,7 @@ import org.bukkit.entity.Player;
 public class ArenaTest implements IArena {
 
 	private List<Player> players = new ArrayList<>();
-	private int elapsed;
+	private HashMap<Player, Integer> elapsed = new HashMap<>();
 	private boolean avaible = true;
 
 	@Override
@@ -31,12 +32,12 @@ public class ArenaTest implements IArena {
 	}
 	
 	@Override
-	public void setElapsedSec(int newValue) {
-		elapsed = newValue;
+	public void setElapsedSec(HashMap<Player, Integer> newHash) {
+		elapsed = newHash;
 	}
 
 	@Override
-	public int getElapsedSec() {
+	public HashMap<Player, Integer> getElapsedSec() {
 		return elapsed;
 	}
 

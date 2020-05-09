@@ -1,5 +1,6 @@
 package me.desertfox.mm;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.bukkit.entity.Player;
@@ -16,9 +17,9 @@ public interface IArena {
 	
 	public void setPlayers(List<Player> list);
 	
-	public void setElapsedSec(int newValue);
+	public void setElapsedSec(HashMap<Player, Integer> newHash);
 	
-	public int getElapsedSec();
+	public HashMap<Player, Integer> getElapsedSec();
 	
 	public boolean isAvaible();
 	

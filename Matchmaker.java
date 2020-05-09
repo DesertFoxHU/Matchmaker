@@ -30,9 +30,13 @@ public class Matchmaker {
 						continue;
 					}
 					
-					arena.setElapsedSec(arena.getElapsedSec()+1);
+					for(Player p : arena.getElapsedSec().keySet()) {
+						int val = arena.getElapsedSec().get(p);
+						val++;
+						arena.getElapsedSec().replace(p, val);
+					}
 					
-					WaitingTickEvent event = new WaitingTickEvent(arena, arena.getElapsedSec());
+					WaitingTickEvent event = new WaitingTickEvent(arena);
 					Bukkit.getPluginManager().callEvent(event);
 					
 					if(arena.getPlayers().size() < arena.getMinPlayers()) {
@@ -55,7 +59,7 @@ public class Matchmaker {
 			Bukkit.getPluginManager().callEvent(event);
 			
 			arena.setAvaible(false);
-			arena.setElapsedSec(0);
+			arena.getElapsedSec().clear();
 			return;
 		}
 		
