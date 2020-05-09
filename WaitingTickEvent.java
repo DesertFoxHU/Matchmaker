@@ -1,4 +1,4 @@
-#package me.desertfox.mm;
+package me.desertfox.mm;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;

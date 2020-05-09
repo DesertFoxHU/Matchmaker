@@ -1,4 +1,4 @@
-#package me.desertfox.mm;
+package me.desertfox.mm;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ public class MatchReadyEvent extends Event {
 	}
 	
 	public List<Player> getPlayers(){
-		return arena.getWaitingPlayers();
+		return arena.getPlayers();
 	}
 
 	public static HandlerList handler = new HandlerList();

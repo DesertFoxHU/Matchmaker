@@ -1,4 +1,4 @@
-#package me.desertfox.mm;
+package me.desertfox.mm;
 
 import java.util.List;
 
@@ -12,9 +12,9 @@ public interface IArena {
 
 	public int getMinPlayers();
 	
-	public List<Player> getWaitingPlayers();
+	public List<Player> getPlayers();
 	
-	public void setWaitingPlayers(List<Player> list);
+	public void setPlayers(List<Player> list);
 	
 	public void setElapsedSec(int newValue);
 	

@@ -1,9 +1,10 @@
-#package me.desertfox.mm;
+package me.desertfox.mm;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -16,7 +17,7 @@ public class Matchmaker {
 	private JavaPlugin plugin;
 	public static List<IArena> arenas = new ArrayList<>();
 	
-	public void startMatchmaker(JavaPlugin plugin, int minPlayer, int maxPlayer, int delay) {
+	public void startMatchmaker(JavaPlugin plugin, int delay) {
 		this.plugin = plugin;
 		
 		new BukkitRunnable() {
@@ -34,7 +35,7 @@ public class Matchmaker {
 					WaitingTickEvent event = new WaitingTickEvent(arena, arena.getElapsedSec());
 					Bukkit.getPluginManager().callEvent(event);
 					
-					if(arena.getWaitingPlayers().size() < arena.getMinPlayers()) {
+					if(arena.getPlayers().size() < arena.getMinPlayers()) {
 						continue;
 					}
 					
@@ -65,6 +66,15 @@ public class Matchmaker {
 			}
 			
 		}.runTaskLater(plugin, delay);
+	}
+	
+	public static IArena getPlaying(Player p) {
+		for(IArena arena : arenas) {
+			if(arena.getPlayers().contains(p)) {
+				return arena;
+			}
+		}
+		return null;
 	}
 	
 }
