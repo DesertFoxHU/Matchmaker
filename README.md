@@ -20,7 +20,7 @@ Then you need to make your own Arena class, which implementing the **IArena**
 public class ArenaTest implements IArena {
 
 	private List<Player> players = new ArrayList<>();
-	private int elapsed;
+	private HashMap<Player, Integer> elapsed = new HashMap<>();
 	private boolean avaible = true;
 
 	@Override
@@ -39,12 +39,12 @@ public class ArenaTest implements IArena {
 	}
 	
 	@Override
-	public void setElapsedSec(int newValue) {
-		elapsed = newValue;
+	public void setElapsedSec(HashMap<Player, Integer> newHash) {
+		elapsed = newHash;
 	}
 
 	@Override
-	public int getElapsedSec() {
+	public HashMap<Player, Integer> getElapsedSec() {
 		return elapsed;
 	}
 
@@ -67,4 +67,14 @@ ArenaTest arena = new ArenaTest();
 Matchmaker.arenas.add((IArena) arena);
 ```
 
-**Good to know:**
+**Good to know:**<br>
+- The Matchmaker ignore the arena if that is not avaible
+- The elapsedSec will be set to 0 after found a match
+- The List<Player> in IArena will be the same after found a match
+- The Matchmaker dont know how many the max players, so you need to control it.
+- You need to write your own join & leave things.
+- After the match is ended, you need set back the arena. (Clearing the players, make avaible again)
+	
+**Events**
+- MatchReadyEvent: called when the matchmaker found a match, you dont need to change the avaible status!
+- WaitingTickEvent: called when the matchmaker try to make a match, you can get the elapsedSec, so for example you can send to every waiting Player how much time elapsed until joined to the waiting list
