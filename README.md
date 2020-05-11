@@ -10,7 +10,7 @@ public class YourMain extends JavaPlugin {
 }
 ```
 
-*startMatchmaker(this, **int delay**) <- delay in seconds. If the matchmaker finds a match it will wait this many seconds before truly activeting the arena*<br>
+*startMatchmaker(this, **int delay**) <- delay in seconds. If the matchmaker finds a match it will wait this many seconds before activating the arena*<br>
 *Why is this good? Because if the arena reach the min player count and if the delay is 0, then that arena will never have more than minimum player count*
 
 Then you need to make your own Arena class, which implementing the **IArena**
