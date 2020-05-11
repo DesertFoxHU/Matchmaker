@@ -70,7 +70,7 @@ Matchmaker.arenas.add((IArena) arena);
 **Good to know:**<br>
 - The Matchmaker ignore the arena if that is not avaible
 - The elapsedSec will be set to 0 after found a match
-- The List<Player> in IArena will be the same after found a match
+- The List<Player> in IArena wont be removed, so you can make things with it
 - The Matchmaker dont know how many the max players, so you need to control it.
 - You need to write your own join & leave things.
 - After the match is ended, you need set back the arena. (Clearing the players, make avaible again)
