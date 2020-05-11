@@ -55,6 +55,11 @@ public class Matchmaker {
 	protected void foundMatch(IArena arena, int delay) {
 		
 		if(delay <= 0) {
+			
+			if(arena.getPlayers().size() < arena.getMinPlayers()) {
+				return;
+			}
+			
 			MatchReadyEvent event = new MatchReadyEvent(arena);
 			Bukkit.getPluginManager().callEvent(event);
 			
